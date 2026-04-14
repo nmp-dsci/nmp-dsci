@@ -29,13 +29,13 @@
 
 ---
 
-### 🧰 Tech Toolbox
-
-<p align="left">
-<img src="https://skillicons.dev/icons?i=py,pytorch,tensorflow,sklearn,pandas,numpy,postgres,mysql,aws,gcp,tableau,powerbi,git,opencv,r" height="50" />
-</p>
-
-> My coding philosophy: **Build and Iterate on Final Delivery** 🔁
+### 🛠️ Skills
+ - Data Science & Strategy 
+ - Data Analysis and Visualization
+ - AI/ML/LLM Implementation and Integration
+ - LLM Performance Optimization: RAG, Agentic RAG, SFT, and RAFT
+ - Data Engineering: Pipelines builds, ETL and quality control 
+ - Cloud Computing and Distributed Systems: Azure, AWS, Terraform
 
 ---
 
