@@ -5,14 +5,15 @@
 
 ### 👨‍💻 About Me
 
-- 🎓 Bachelors Science / Commerce, Majors in Statistics, Finance & Econometrics @ Macquiare University (2013)
 - 🛠 Experienced Data Scientist Delivering end to end Projcts in Tech / Consulting / Startup / Corporate 
-- 🧠 Passionate about AI, Analytics and Machine Learning  
+- 🧠 Passionate about Data, AI, Analytics and Machine Learning  
 - 🌱 Currently learning **Agentic AI** to pivot to Applied AI engineer
 - 🛠 Skills: Python, SQL, ML Engineering, Data Visualisation, Project Delivery, AI 
 - 🚀 Open to: ** AI /ML / Data Science roles across Australia**
 - 📂 Portfolio: https://nmp-dsci.github.io  
 - 📬 Reach me: nmpdsci@gmail.com
+- - 🎓 Bachelors Science / Commerce, Majors in Statistics, Finance & Econometrics @ Macquiare University (2013)
+
 
 ---
 
