@@ -12,7 +12,7 @@
 - 🚀 Open to: ** AI /ML / Data Science roles across Australia**
 - 📂 Portfolio: https://nmp-dsci.github.io  
 - 📬 Reach me: nmpdsci@gmail.com
-- - 🎓 Bachelors Science / Commerce, Majors in Statistics, Finance & Econometrics @ Macquiare University (2013)
+- 🎓 Bachelors Science / Commerce, Majors in Statistics, Finance & Econometrics @ Macquiare University (2013)
 
 
 ---
