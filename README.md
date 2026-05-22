@@ -7,12 +7,12 @@
 
 - 🛠 Experienced Data Scientist Delivering end to end Projcts in Tech / Consulting / Startup / Corporate 
 - 🧠 Passionate about Data, AI, Analytics and Machine Learning  
-- 🌱 Currently learning **Agentic AI** to pivot to Applied AI engineer
+- 🌱 Currently learning **Agentic AI** to expand into building AI Agents and work through Coding agents
 - 🛠 Skills: Python, SQL, ML Engineering, Data Visualisation, Project Delivery, AI 
 - 🚀 Open to: ** AI /ML / Data Science roles across Australia**
 - 📂 Portfolio: https://nmp-dsci.github.io  
 - 📬 Reach me: nmpdsci@gmail.com
-- 🎓 Bachelors Science / Commerce, Majors in Statistics, Finance & Econometrics @ Macquiare University (2013)
+- 🎓 Bachelors Science / Commerce, Majors in Statistics, Finance & Econometrics @ Macquiare University  
 
 
 ---
@@ -42,13 +42,13 @@
 
 ### ⭐ Featured Projects
 
-| Project | Description | Impact |
-|--------|-------------|-------|
-| 📚 Hybrid RAG Pipeline | 2k Document Filter | ⏱️ 70% workflow automation |
-| 🎧 Q&A Chatbot| Financial data (ConvFinQA) mutli turn chat bot | 90% accuracy with Multi-Agent |
-| 🧠 Auto Data Analyst | Text to SQL agent,  | 🩺 +20% diagnostic accuracy |
-| 📊 Prompt Versioning & A/B testing | Insights from 9k+ records | ✅ Identified 34% care gap |
-| 💳 Coding Agent Setup | Resouces to delivery AI projects with Coding Agents  | ⚡ Systematically build AI projects no Vibes |
+| Project | Description | Impact | Repo | 
+|--------|-------------|-------|---------------|
+| 🎧 Finance Q&A Chatbot| Financial data (ConvFinQA) mutli turn chat bot | 90% accuracy with Multi-Agent | https://github.com/nmp-dsci/ConvFinQA-agent |
+| 📚 Legal Q&A Agent | Extract Legal Clauses from Contract  | ⏱️ Reduce manual effort reading contracts  | https://github.com/nmp-dsci/CUAD-agent | 
+| 📊 YouTube Transcript Agent | Q&A agent on target topics with filtering and recursive RAG | Time to insight / deeper analysis | https://github.com/nmp-dsci/yt-agent | 
+| 💳 Coding Agent Setup | ai_spec folder in above projects  | ⚡ Systematically build AI projects no Vibes | above repos | 
+| 🧠 Auto Data Analyst | Text to SQL agent,  | TBC | TBC | 
 
 📌 All repos: https://github.com/nmp-dsci?tab=repositories  
 
