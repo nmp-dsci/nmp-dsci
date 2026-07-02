@@ -48,7 +48,7 @@
 | 📚 Legal Q&A Agent | Extract Legal Clauses from Contract  | ⏱️ Reduce manual effort reading contracts  | https://github.com/nmp-dsci/CUAD-agent | 
 | 📊 YouTube Transcript Agent | Q&A agent on target topics with filtering and recursive RAG | Time to insight / deeper analysis | https://github.com/nmp-dsci/yt-agent | 
 | 💳 Coding Agent Setup | ai_spec folder in above projects  | ⚡ Systematically build AI projects no Vibes | above repos | 
-| 🧠 Auto Data Analyst | Text to SQL agent,  | TBC | TBC | 
+| 🧠 Auto Data Analyst | Text to SQL agent,  | TBC | https://github.com/nmp-dsci/data-qa-agent | 
 
 📌 All repos: https://github.com/nmp-dsci?tab=repositories  
 
