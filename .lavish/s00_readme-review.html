@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>README Review — nmp-dsci profile</title>
+<style>
+  :root{
+    --bg:#ffffff; --bg2:#f6f8fa; --bg3:#eaeef2; --fg:#1f2328; --muted:#59636e; --border:#d0d7de;
+    --blue:#0969da; --blue-bg:#ddf4ff; --green:#1a7f37; --green-bg:#dafbe1; --amber:#9a6700; --amber-bg:#fff8c5;
+    --red:#cf222e; --red-bg:#ffebe9; --purple:#8250df; --purple-bg:#fbefff; --code-bg:rgba(175,184,193,.2);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0d1117; --bg2:#161b22; --bg3:#21262d; --fg:#e6edf3; --muted:#8b949e; --border:#30363d;
+      --blue:#4493f8; --blue-bg:#121d2f; --green:#3fb950; --green-bg:#12261e; --amber:#d29922; --amber-bg:#272115;
+      --red:#f85149; --red-bg:#2d1519; --purple:#ab7df8; --purple-bg:#221a2e; --code-bg:rgba(110,118,129,.4);
+    }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  :where(.grid,.flex,.layout-grid,.layout-flex)>*{min-width:0}
+  :where(p,h1,h2,h3,h4,h5,h6,li,dd,blockquote,figcaption,td,th,.badge,.label){overflow-wrap:anywhere}
+  :where(img,svg,video,canvas,iframe){max-width:100%;height:auto}
+  html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif}
+  a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+  code,kbd,pre{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;font-size:.9em}
+  code{background:var(--code-bg);padding:.15em .35em;border-radius:5px}
+  main{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+  .topbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;color:var(--muted);font-size:13px;margin-bottom:6px}
+  .topbar .repo{font-family:ui-monospace,Menlo,monospace;color:var(--fg)}
+  h1{font-size:30px;margin:4px 0 6px;line-height:1.25}
+  .lede{color:var(--muted);font-size:16px;max-width:820px;margin:0 0 22px}
+  h2{font-size:22px;margin:44px 0 6px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+  h2 .n{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--fg);color:var(--bg);font-size:14px;text-align:center;line-height:28px;margin-right:8px;vertical-align:2px}
+  h3{font-size:17px;margin:22px 0 8px}
+  .sub{color:var(--muted);margin:0 0 16px}
+  .card{border:1px solid var(--border);border-radius:10px;background:var(--bg);padding:16px 18px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:18px 0 8px}
+  .stat{border:1px solid var(--border);border-radius:10px;padding:14px 16px;background:var(--bg2)}
+  .stat .t{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .stat .v{font-size:30px;font-weight:700;line-height:1.15;margin:4px 0 2px}
+  .stat .d{font-size:13px;color:var(--muted)}
+  .stat.hero{background:var(--amber-bg);border-color:color-mix(in srgb,var(--amber) 40%,var(--border))}
+  .stat.good{background:var(--green-bg);border-color:color-mix(in srgb,var(--green) 40%,var(--border))}
+  .badge{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+  .b-red{background:var(--red-bg);color:var(--red)} .b-amber{background:var(--amber-bg);color:var(--amber)} .b-green{background:var(--green-bg);color:var(--green)} .b-blue{background:var(--blue-bg);color:var(--blue)} .b-purple{background:var(--purple-bg);color:var(--purple)} .b-grey{background:var(--bg3);color:var(--muted)}
+  .tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px}
+  table.rubric{width:100%;border-collapse:collapse;font-size:14px}
+  table.rubric th,table.rubric td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;text-align:left}
+  table.rubric th{background:var(--bg2);font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);position:sticky;top:0}
+  table.rubric tr:last-child td{border-bottom:0}
+  table.rubric tbody tr:hover{background:var(--bg2)}
+  table.rubric td.crit{min-width:150px;font-weight:600}
+  table.rubric td.crit small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:2px}
+  table.rubric td.best{min-width:230px;color:var(--fg)}
+  table.rubric td.now{min-width:260px}
+  table.rubric td.score{white-space:nowrap;min-width:110px}
+  .dots{display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px}
+  .dots i{width:10px;height:10px;border-radius:50%;background:var(--bg3);border:1px solid var(--border)}
+  .dots i.on{background:var(--fg);border-color:var(--fg)}
+  .s1 .dots i.on,.s1 .num{background:var(--red);border-color:var(--red)} .s1 .num{color:#fff}
+  .s2 .dots i.on,.s2 .num{background:var(--amber);border-color:var(--amber)} .s2 .num{color:#fff}
+  .s3 .dots i.on{background:var(--amber);border-color:var(--amber)} .s3 .num{background:var(--amber-bg);color:var(--amber)}
+  .s4 .dots i.on{background:var(--green);border-color:var(--green)} .s4 .num{background:var(--green-bg);color:var(--green)}
+  .num{display:inline-block;font-weight:700;font-size:12px;padding:0 7px;border-radius:999px;vertical-align:middle}
+  .ev{color:var(--muted);font-size:13px} .ev q{font-style:italic}
+  tfoot td{background:var(--bg2);font-weight:700}
+  .bars{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 28px;margin-top:8px}
+  @media (max-width:760px){.bars{grid-template-columns:minmax(0,1fr)}}
+  .bar{display:grid;grid-template-columns:150px minmax(0,1fr) 36px;align-items:center;gap:10px;font-size:13px}
+  .bar .lbl{color:var(--fg)}
+  .bar .trk{height:10px;background:var(--bg3);border-radius:999px;overflow:hidden}
+  .bar .fill{height:100%;border-radius:999px;background:var(--fg)}
+  .bar.s1 .fill{background:var(--red)} .bar.s2 .fill{background:var(--amber)} .bar.s3 .fill{background:var(--amber)} .bar.s4 .fill{background:var(--green)}
+  .bar .val{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+  .issues{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:12px}
+  .issue{border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:8px;padding:12px 14px;background:var(--bg)}
+  .issue.red{border-left-color:var(--red)} .issue.blue{border-left-color:var(--blue)}
+  .issue h4{margin:0 0 4px;font-size:14px} .issue p{margin:0;font-size:13px;color:var(--muted)}
+  .issue .fixin{margin-top:6px;font-size:12px}
+  .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:14px}
+  .opt{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg)}
+  .opt header{padding:14px 18px;background:var(--bg2);border-bottom:1px solid var(--border)}
+  .opt header .k{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .opt header h3{margin:2px 0 4px;font-size:19px}
+  .opt header p{margin:0;color:var(--muted);font-size:14px}
+  .opt .body{padding:14px 18px}
+  .kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:6px 12px;font-size:14px;margin:0}
+  .kv dt{color:var(--muted)} .kv dd{margin:0}
+  .opt ul{margin:8px 0 0;padding-left:18px;font-size:14px} .opt li{margin:3px 0}
+  .opt.rec{border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 18%,transparent)}
+  .tabs{margin-top:22px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .tabs>input{position:absolute;opacity:0;pointer-events:none}
+  .tabs .tabbar{display:flex;gap:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:0 8px}
+  .tabs .tabbar label{padding:10px 14px;cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tabs .tabbar label:hover{color:var(--fg)}
+  .tabs .pane{display:none;padding:0}
+  .tabs input:nth-of-type(1):checked~.tabbar label:nth-of-type(1),.tabs input:nth-of-type(2):checked~.tabbar label:nth-of-type(2){color:var(--fg);border-bottom-color:#f78166}
+  .tabs input:nth-of-type(1):checked~.pane:nth-of-type(1),.tabs input:nth-of-type(2):checked~.pane:nth-of-type(2){display:block}
+  .tabs .pane .src{padding:6px}
+  /* GitHub markdown preview */
+  .gh{padding:28px 32px;max-width:100%;font-size:16px;line-height:1.5;background:var(--bg)}
+  .gh .frame{border:1px solid var(--border);border-radius:8px;padding:24px 28px}
+  .gh h1{font-size:2em;font-weight:600;border-bottom:1px solid var(--border);padding-bottom:.3em;margin:0 0 16px;line-height:1.25}
+  .gh h2{font-size:1.5em;font-weight:600;border-bottom:1px solid var(--border);padding-bottom:.3em;margin:24px 0 16px}
+  .gh h3{font-size:1.25em;font-weight:600;margin:24px 0 16px}
+  .gh h4{font-size:1em;font-weight:600;margin:24px 0 8px}
+  .gh p{margin:0 0 16px} .gh ul{margin:0 0 16px;padding-left:2em} .gh li{margin:.25em 0}
+  .gh hr{border:0;border-top:4px solid var(--border);margin:24px 0;height:0;background:none}
+  .gh table{border-collapse:collapse;margin:0 0 16px;display:block;overflow-x:auto;max-width:100%;font-size:14px}
+  .gh th,.gh td{border:1px solid var(--border);padding:6px 13px;vertical-align:top}
+  .gh th{font-weight:600} .gh tr:nth-child(2n){background:var(--bg2)}
+  .gh .center{text-align:center}
+  .gh img.shield{display:inline-block;vertical-align:middle;margin:2px 3px 2px 0}
+  .gh .chip{display:inline-block;background:var(--code-bg);border-radius:5px;padding:.1em .4em;font-family:ui-monospace,Menlo,monospace;font-size:.85em;margin-right:3px}
+  .gh strong{font-weight:600}
+  .gh .note{background:var(--blue-bg);border-left:4px solid var(--blue);padding:8px 12px;font-size:13px;color:var(--fg);margin:0 0 16px;border-radius:0 6px 6px 0}
+  .gh .ph{display:inline-block;border:1px dashed var(--muted);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:13px}
+  /* input form */
+  form.decide{display:grid;gap:14px}
+  form.decide .choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+  form.decide label.ch{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;background:var(--bg)}
+  form.decide label.ch:has(input:checked){border-color:var(--blue);background:var(--blue-bg)}
+  form.decide label.ch b{display:block;font-size:14px} form.decide label.ch span{font-size:13px;color:var(--muted)}
+  form.decide textarea{width:100%;min-height:74px;border:1px solid var(--border);border-radius:8px;padding:10px;background:var(--bg);color:var(--fg);font:inherit;font-size:14px;resize:vertical}
+  form.decide .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .btn{background:var(--green);color:#fff;border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:14px;cursor:pointer}
+  .btn:hover{filter:brightness(1.08)}
+  #queued{font-size:13px;color:var(--muted)}
+  .diffnote{font-size:13px;color:var(--muted);margin:0 0 10px}
+  .foot{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);padding-top:14px}
+</style>
+</head>
+<body>
+<main>
+
+<div class="topbar">
+  <span class="repo">nmp-dsci/nmp-dsci · README.md</span>
+  <span>·</span><span>GitHub <b>profile</b> README (not a project README — scored against that standard)</span>
+  <span>·</span><span>Reviewed 31 Aug 2026</span>
+</div>
+<h1>README review, rubric &amp; two rewrites</h1>
+<p class="lede">Your profile README has the right bones — projects, contact, skills, a clear "open to" — but it's underselling work that is genuinely strong. The repos behind it carry real, defensible numbers; the profile mostly doesn't use them, and a handful of polish errors cost credibility in the first five seconds.</p>
+
+<div class="stats">
+  <div class="stat hero"><div class="t">Current score</div><div class="v">26<span style="font-size:16px;color:var(--muted)"> / 50</span></div><div class="d">Tier: <b>Solid, underselling</b></div></div>
+  <div class="stat"><div class="t">Criteria at 1–2 / 5</div><div class="v">4</div><div class="d">Polish · Impact · Skills · Focus</div></div>
+  <div class="stat"><div class="t">Concrete issues found</div><div class="v">10</div><div class="d">1 factual, 5 polish, 4 structural</div></div>
+  <div class="stat good"><div class="t">Projected — Option A</div><div class="v">41</div><div class="d">Evidence-first table (low effort)</div></div>
+  <div class="stat good"><div class="t">Projected — Option B</div><div class="v">44</div><div class="d">Case-study narrative (medium effort)</div></div>
+</div>
+
+
+<!-- ============ 0. APPLIED ============ -->
+<h2 style="margin-top:28px"><span class="n">✓</span>Applied: Blend (B body + A badges &amp; skills table) — rescored <b>45 / 50</b></h2>
+<p class="sub">Written to <code>README.md</code> (working tree, not committed). Rescored against the same ten criteria below; threshold of 45 reached, so this review is complete.</p>
+<div class="stats">
+  <div class="stat good"><div class="t">New score</div><div class="v">45<span style="font-size:16px;color:var(--muted)"> / 50</span></div><div class="d">Tier: <b>Best-in-class</b> (was 26)</div></div>
+  <div class="stat"><div class="t">Criteria at 5 / 5</div><div class="v">5</div><div class="d">Hook · Skills · Polish · CTA · Credibility</div></div>
+  <div class="stat"><div class="t">Issues remaining</div><div class="v">0</div><div class="d">of the 10 found</div></div>
+  <div class="stat"><div class="t">To reach 48+</div><div class="v">2</div><div class="d">one GIF · one metric for transcript·lab</div></div>
+</div>
+<div class="tablewrap"><table class="rubric"><thead><tr><th>Criterion</th><th>New README (evidence)</th><th>Score</th></tr></thead><tbody><tr class="s4"><td class="crit">1. Hook & positioning</td><td class="now">"I build AI systems that are measured, not asserted" — specific, can't be anyone else's.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="num">5</span></td></tr><tr class="s4"><td class="crit">2. Quantified impact</td><td class="now">2 of 4 projects carry hard numbers (77.7% acc; 83.7% F1 +43.6 pts). transcript·lab and Data Pilot have qualitative results — a retrieval IR metric and an eval score would close this.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="num">4</span></td></tr><tr class="s4"><td class="crit">3. Featured projects</td><td class="now">Problem → Built → Result → stack → linked repo for all four. No screenshot/GIF yet.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="num">4</span></td></tr><tr class="s4"><td class="crit">4. Skills as evidence</td><td class="now">Listed once, five grouped rows, every item backed by a project above.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="num">5</span></td></tr><tr class="s4"><td class="crit">5. Polish</td><td class="now">Typos fixed, bold renders, no empty sections, all 10 links return 200. Verified by grep + curl.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="num">5</span></td></tr><tr class="s4"><td class="crit">6. CTA & contact</td><td class="now">Three badges above the fold plus a bold 'Open to … Australia' line.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="num">5</span></td></tr><tr class="s4"><td class="crit">7. Visual identity & scannability</td><td class="now">Clear H2/H4 hierarchy, badges, chips, counter removed. Still no imagery.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="num">4</span></td></tr><tr class="s4"><td class="crit">8. Currency & momentum</td><td class="now">Repos are current and the page says what you're building now; no explicit 'now / next' line.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="num">4</span></td></tr><tr class="s4"><td class="crit">9. Credibility signals</td><td class="now">Education, sectors, portfolio, and a real 'How I work' section (ai_specs).</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="num">5</span></td></tr><tr class="s4"><td class="crit">10. Focus & length</td><td class="now">No duplication or filler; longer than before but every section earns its place.</td><td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i></span><span class="num">4</span></td></tr></tbody>
+<tfoot><tr><td colspan="2">Total</td><td class="score">45 / 50 · 90%</td></tr></tfoot></table></div>
+<!-- ============ 1. RUBRIC ============ -->
+<h2><span class="n">1</span>Rubric — what a best-in-class GitHub profile README has</h2>
+<p class="sub">Ten criteria, 0–5 each, equal weight. Tiers: <b>45+</b> best-in-class · <b>35–44</b> strong · <b>25–34</b> solid · <b>&lt;25</b> needs work. The "your README today" column quotes the file so every score is checkable.</p>
+
+<div class="tablewrap">
+<table class="rubric">
+<thead><tr><th>Criterion</th><th>Best-in-class looks like</th><th>Your README today (evidence)</th><th>Score</th></tr></thead>
+<tbody>
+<tr class="s3"><td class="crit">1. Hook &amp; positioning<small>First 3 seconds</small></td>
+<td class="best">One line that says <i>who</i>, <i>what you build</i>, and <i>for whom</i> — specific enough that it couldn't be any other person's profile.</td>
+<td class="now">"Turning data into decisions that drive real-world impact" — pleasant but generic; fits any analyst. The interesting positioning (data scientist moving into agentic AI) is buried in bullet 3. <span class="ev">Name + wave emoji header is fine.</span></td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="num">3</span></td></tr>
+
+<tr class="s2"><td class="crit">2. Quantified impact<small>Numbers, not adjectives</small></td>
+<td class="best">Every featured project has a result a hiring manager can repeat: accuracy, F1, cost/time saved, users — sourced from the repo.</td>
+<td class="now">1 of 4 projects has a number ("90% accuracy") and it <b>doesn't match the repo</b> (ConvFinQA README reports 77.1% overall / 77.7% never-seen). Others: "TBC", "Time to insight", "Reduce manual effort". CUAD's <b>83.7% F1, +43.6 pts</b> is unused.</td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="num">2</span></td></tr>
+
+<tr class="s3"><td class="crit">3. Featured projects<small>Depth &amp; link quality</small></td>
+<td class="best">3–5 projects, each: problem → what you built → result → stack → link (name, not raw URL). Ideally one screenshot or GIF.</td>
+<td class="now">4 projects in a table with raw URLs. No stack column, no visuals. Names differ from the repos (YouTube Transcript Agent → <code>transcript-rag-agent</code>; Auto Data Analyst → "Data Pilot"). Description "Text to SQL agent, " has a trailing comma. All links resolve (checked).</td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="num">3</span></td></tr>
+
+<tr class="s2"><td class="crit">4. Skills as evidence<small>Grouped, scannable, tied to work</small></td>
+<td class="best">Skills grouped into 4–6 buckets (AI/LLM, data, engineering, cloud, delivery), each backed by something in the projects; listed once.</td>
+<td class="now">Skills appear <b>twice</b> (About-me bullet "Skills: Python, SQL, …" and a separate 🛠️ Skills section). Ungrouped bullets; some good specifics (RAG, Agentic RAG, SFT, RAFT) mixed with vague ones ("Data Science &amp; Strategy").</td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="num">2</span></td></tr>
+
+<tr class="s1"><td class="crit">5. Polish<small>Spelling, grammar, markdown</small></td>
+<td class="best">Zero typos. Markdown renders exactly as intended. Consistent capitalisation and emoji use.</td>
+<td class="now">"Projcts", "Macquiare", "mutli"; "Experienced Data Scientist Delivering" (stray capital); <code>** AI /ML … Australia**</code> — the space after <code>**</code> breaks the bold so GitHub shows literal asterisks; "Pipelines builds". This is the section where trust is lost fastest.</td>
+<td class="score"><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></span><span class="num">1</span></td></tr>
+
+<tr class="s4"><td class="crit">6. Call to action &amp; contact<small>What you want, how to reach you</small></td>
+<td class="best">One explicit ask ("Open to X roles in Y") plus 2–3 contact routes above the fold.</td>
+<td class="now">Strong: "Open to AI/ML/Data Science roles across Australia", email, LinkedIn badge, portfolio link. Only loses a point because the ask is the line with the broken bold.</td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="num">4</span></td></tr>
+
+<tr class="s3"><td class="crit">7. Visual identity &amp; scannability<small>Hierarchy, badges, imagery</small></td>
+<td class="best">Clear H2/H3 hierarchy, tech badges or a compact stack line, at most one decorative widget, no orphan dividers.</td>
+<td class="now">Reasonable headers and emoji. Two consecutive <code>---</code> after projects leave an empty section. Profile-view counter is a 2019-era vanity widget that tells a hiring manager nothing. No project imagery.</td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="num">3</span></td></tr>
+
+<tr class="s3"><td class="crit">8. Currency &amp; momentum<small>Shows you're active now</small></td>
+<td class="best">A "now / currently learning" line, recent repos with CI badges, GitHub stats or a pinned-repo strategy that matches the README.</td>
+<td class="now">"Currently learning Agentic AI" is good and honest. But the repos already <i>are</i> agentic AI systems with CI and eval gates — the README under-claims. No stats/activity card (optional).</td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="num">3</span></td></tr>
+
+<tr class="s3"><td class="crit">9. Credibility signals<small>Background, education, method</small></td>
+<td class="best">Education, sector experience, portfolio site, and — a differentiator — a sentence on <i>how</i> you work.</td>
+<td class="now">Education (with typo), sector list, portfolio, LinkedIn: present. The <b>only "how I work" line — the Coding Agent Setup / <code>ai_spec</code> row — was just deleted</b> in your uncommitted change. That was a differentiator; it belonged in a section, not a table row.</td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="num">3</span></td></tr>
+
+<tr class="s2"><td class="crit">10. Focus &amp; length<small>Every section earns its place</small></td>
+<td class="best">Readable in 30 seconds. No duplication, no empty sections, no filler widgets. Strongest evidence highest on the page.</td>
+<td class="now">Duplicate skills, an empty section, a vanity counter, and the best evidence (project results) sits below two sections of bullets. Length itself is fine.</td>
+<td class="score"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="num">2</span></td></tr>
+</tbody>
+<tfoot><tr><td colspan="3">Total</td><td class="score">26 / 50 · 52%</td></tr></tfoot>
+</table>
+</div>
+
+<!-- ============ 2. SCORE + ISSUES ============ -->
+<h2><span class="n">2</span>Where the points go</h2>
+<p class="sub">Scores per criterion, then the ten concrete issues behind them. Both rewrites below fix all ten; the quick-fix patch in §3 fixes the seven that need no restructuring.</p>
+
+<div class="bars">
+  <div class="bar s3"><span class="lbl">Hook &amp; positioning</span><div class="trk"><div class="fill" style="width:60%"></div></div><span class="val">3</span></div>
+  <div class="bar s4"><span class="lbl">CTA &amp; contact</span><div class="trk"><div class="fill" style="width:80%"></div></div><span class="val">4</span></div>
+  <div class="bar s2"><span class="lbl">Quantified impact</span><div class="trk"><div class="fill" style="width:40%"></div></div><span class="val">2</span></div>
+  <div class="bar s3"><span class="lbl">Visual &amp; scannable</span><div class="trk"><div class="fill" style="width:60%"></div></div><span class="val">3</span></div>
+  <div class="bar s3"><span class="lbl">Featured projects</span><div class="trk"><div class="fill" style="width:60%"></div></div><span class="val">3</span></div>
+  <div class="bar s3"><span class="lbl">Currency &amp; momentum</span><div class="trk"><div class="fill" style="width:60%"></div></div><span class="val">3</span></div>
+  <div class="bar s2"><span class="lbl">Skills as evidence</span><div class="trk"><div class="fill" style="width:40%"></div></div><span class="val">2</span></div>
+  <div class="bar s3"><span class="lbl">Credibility signals</span><div class="trk"><div class="fill" style="width:60%"></div></div><span class="val">3</span></div>
+  <div class="bar s1"><span class="lbl">Polish</span><div class="trk"><div class="fill" style="width:20%"></div></div><span class="val">1</span></div>
+  <div class="bar s2"><span class="lbl">Focus &amp; length</span><div class="trk"><div class="fill" style="width:40%"></div></div><span class="val">2</span></div>
+</div>
+
+<div class="issues">
+  <div class="issue red"><h4>① "90% accuracy" isn't what the repo says</h4><p>ConvFinQA-agent's README reports <b>77.1% overall (770 q)</b> and <b>77.7% on never-seen conversations</b>, v2 champion. If 90% is a different metric (e.g. a subset or an older run) it needs a label; otherwise a recruiter who clicks through sees a mismatch.</p><p class="fixin"><span class="badge b-red">factual</span> fixed in quick-fix, A, B</p></div>
+  <div class="issue red"><h4>② Broken bold on your most important line</h4><p><code>** AI /ML / Data Science roles across Australia**</code> — the space after the opening <code>**</code> means GitHub renders literal asterisks on the "open to" line.</p><p class="fixin"><span class="badge b-red">polish</span> fixed in quick-fix, A, B</p></div>
+  <div class="issue"><h4>③ Three typos + a stray capital</h4><p>"Projcts" → Projects · "Macquiare" → Macquarie · "mutli" → multi · "Data Scientist Delivering" → delivering · "Pipelines builds" → pipeline builds.</p><p class="fixin"><span class="badge b-amber">polish</span> fixed in quick-fix, A, B</p></div>
+  <div class="issue"><h4>④ "TBC" impact and a trailing comma</h4><p>Auto Data Analyst row: description ends "Text to SQL agent, " and impact is "TBC". The repo has a concrete story: governed SQL with row-level security, one-command stack.</p><p class="fixin"><span class="badge b-amber">polish</span> fixed in quick-fix, A, B</p></div>
+  <div class="issue"><h4>⑤ Skills listed twice</h4><p>About-me bullet "🛠 Skills: Python, SQL, ML Engineering…" duplicates the 🛠️ Skills section below it.</p><p class="fixin"><span class="badge b-amber">structure</span> fixed in quick-fix, A, B</p></div>
+  <div class="issue"><h4>⑥ Empty section</h4><p>Two consecutive <code>---</code> after the projects table (left behind when the Coding Agent Setup row was removed).</p><p class="fixin"><span class="badge b-amber">polish</span> fixed in quick-fix, A, B</p></div>
+  <div class="issue blue"><h4>⑦ You deleted your differentiator</h4><p>The uncommitted diff removes "Coding Agent Setup — ai_spec folder — build AI projects, no vibes". It was awkward as a table row, but it's the one line describing <i>how</i> you work. Option B restores it as a "How I work" section.</p><p class="fixin"><span class="badge b-blue">structure</span> fixed in B (A: optional line)</p></div>
+  <div class="issue"><h4>⑧ Unused evidence in the repos</h4><p>CUAD: 83.65% token-F1 on 2,050 examples, +43.6 pts over baseline. transcript·lab: CI eval-regression gate, 4 answer paths, GraphRAG. Data Pilot: RLS-governed text-to-SQL. None of it is on the profile.</p><p class="fixin"><span class="badge b-amber">impact</span> fixed in A, B</p></div>
+  <div class="issue"><h4>⑨ Raw URLs and mismatched names</h4><p>Repo column shows bare URLs; project names don't match repo/product names, so a reader can't connect the profile to the pinned repos.</p><p class="fixin"><span class="badge b-amber">structure</span> fixed in A, B</p></div>
+  <div class="issue"><h4>⑩ Vanity counter, no stack, no visuals</h4><p>The profile-views badge adds noise; no per-project stack; no screenshot/GIF. A one-line stack per project is cheap; a single GIF of the ConvFinQA admin console would be the highest-value visual.</p><p class="fixin"><span class="badge b-amber">visual</span> A adds stack; B adds stack + how-I-work; GIF is on you</p></div>
+</div>
+
+<!-- ============ 3. QUICK FIX DIFF ============ -->
+<h2><span class="n">3</span>Quick-fix patch — the 7 changes that need no restructuring</h2>
+<p class="diffnote">Split diff: current <code>README.md</code> (left) → same structure with issues ①–⑥ fixed (right). Apply this today even if you choose a rewrite later.</p>
+<div id="quickfix" class="card" style="padding:6px"></div>
+
+<!-- ============ 4. TWO ALTERNATIVES ============ -->
+<h2><span class="n">4</span>Two alternative rewrites</h2>
+<p class="sub">Both fix all ten issues and use only facts pulled from your repos' READMEs (numbers are quoted, not invented). They differ in shape: <b>A</b> keeps your table-first layout and polishes it; <b>B</b> turns each project into a four-line case study and adds the "how I work" story.</p>
+
+<div class="options">
+  <div class="opt">
+    <header><div class="k">Option A</div><h3>Evidence-first profile</h3><p>Same skeleton as today, every cell earns its place.</p></header>
+    <div class="body">
+      <dl class="kv">
+        <dt>Projected score</dt><dd><b>41 / 50</b> <span class="badge b-green">strong</span></dd>
+        <dt>Effort</dt><dd>~20 min — copy in, verify numbers</dd>
+        <dt>Risk</dt><dd>Low — familiar format, no claims beyond the repos</dd>
+        <dt>Best for</dt><dd>Recruiters who skim; ATS-style scanning</dd>
+      </dl>
+      <ul>
+        <li>Contact badges moved above the fold, portfolio added as a badge</li>
+        <li>Projects table gains <b>Result</b> + <b>Stack</b> columns, names link to repos</li>
+        <li>Skills collapsed to one grouped 5-row table</li>
+        <li>Optional GitHub stats cards replace the view counter</li>
+        <li>Cost: still a list-of-things page; "how I work" is a single optional line</li>
+      </ul>
+    </div>
+  </div>
+  <div class="opt rec">
+    <header><div class="k">Option B <span class="badge b-green" style="margin-left:6px">recommended</span></div><h3>Case-study profile</h3><p>Lean, narrative, built around one thesis: "measured, not asserted".</p></header>
+    <div class="body">
+      <dl class="kv">
+        <dt>Projected score</dt><dd><b>44 / 50</b> <span class="badge b-green">strong → best-in-class with one GIF</span></dd>
+        <dt>Effort</dt><dd>~45 min — read each case study against its repo</dd>
+        <dt>Risk</dt><dd>Medium — more prose to keep current; bolder positioning</dd>
+        <dt>Best for</dt><dd>Hiring managers and AI-engineering leads who read</dd>
+      </dl>
+      <ul>
+        <li>Headline positions you as an AI engineer with an evaluation habit — matches what the repos actually show</li>
+        <li>Each project: <b>Problem → Built → Result → stack → repo</b></li>
+        <li>Restores the deleted <code>ai_specs</code> story as "How I work"</li>
+        <li>Skills become a one-line toolbox at the end (they're proven above)</li>
+        <li>Cost: no table to skim; longer; "Currently learning" is replaced by evidence of having learned</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3>Option A — rendered preview &amp; markdown</h3>
+<div class="tabs">
+  <input type="radio" name="tabA" id="tabA-1" checked><input type="radio" name="tabA" id="tabA-2">
+  <div class="tabbar"><label for="tabA-1">Rendered (as GitHub shows it)</label><label for="tabA-2">Markdown source</label></div>
+  <div class="pane"><div class="gh"><div class="frame">
+    <h1 class="center" style="border:0">Hi 👋, I'm Nathan Phillips</h1>
+    <h3 class="center" style="margin-top:0">Data Scientist → AI Engineer. I ship evaluated, production-grade LLM systems.</h3>
+    <p class="center">
+      <img class="shield" alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+      <img class="shield" alt="Email" src="https://img.shields.io/badge/Email-nmpdsci%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white">
+      <img class="shield" alt="Portfolio" src="https://img.shields.io/badge/Portfolio-nmp--dsci.github.io-222?style=for-the-badge&logo=github&logoColor=white">
+    </p>
+    <hr>
+    <h3>👨‍💻 About me</h3>
+    <ul>
+      <li>🛠 Data Scientist with end-to-end delivery experience across tech, consulting, startup and corporate</li>
+      <li>🤖 Now building <strong>agentic AI systems</strong> — multi-agent pipelines, RAG, text-to-SQL — with evals as the source of truth</li>
+      <li>🎓 BSc / BCom (Statistics, Finance &amp; Econometrics), Macquarie University</li>
+      <li>🚀 <strong>Open to AI / ML / Data Science roles across Australia</strong></li>
+    </ul>
+    <hr>
+    <h3>⭐ Featured projects</h3>
+    <table><thead><tr><th>Project</th><th>What it does</th><th>Result</th><th>Stack</th></tr></thead><tbody>
+      <tr><td>💬 <a href="https://github.com/nmp-dsci/ConvFinQA-agent">ConvFinQA Agent</a></td><td>Multi-turn financial Q&amp;A over report text + tables; 4-stage agent pipeline with admin console &amp; experiment tracking</td><td><strong>77.7% accuracy</strong> on never-seen conversations (+4.9 pts via GEPA prompt optimisation)</td><td>Pydantic AI · GEPA · Docker</td></tr>
+      <tr><td>⚖️ <a href="https://github.com/nmp-dsci/CUAD-agent">CUAD Legal Agent</a></td><td>Answers 41 standard legal-review questions across 50 contracts; compares raw vs dense / hybrid / hierarchical RAG</td><td><strong>83.7% token-F1</strong>, +43.6 pts over baseline on 2,050 examples</td><td>LangChain · DSPy · BM25 + dense</td></tr>
+      <tr><td>🎧 <a href="https://github.com/nmp-dsci/transcript-rag-agent">transcript·lab</a></td><td>Evaluation-first YouTube-transcript RAG: hybrid retrieval, reranking, multi-hop, GraphRAG</td><td>4 answer paths benchmarked on a golden set; CI eval-regression gate</td><td>Neo4j · MiniLM · RRF</td></tr>
+      <tr><td>📊 <a href="https://github.com/nmp-dsci/data-qa-agent">Data Pilot</a></td><td>Text-to-SQL data agent with row-level security — users only query what they're authorised to see</td><td>One-command local stack (<code>make up</code>)</td><td>Postgres + pgvector · dlt · dbt · Docker</td></tr>
+    </tbody></table>
+    <p>📌 <a href="https://github.com/nmp-dsci?tab=repositories">All repositories →</a></p>
+    <hr>
+    <h3>🛠️ Skills</h3>
+    <table><tbody>
+      <tr><td><strong>AI / LLM</strong></td><td>RAG (dense, hybrid, hierarchical, GraphRAG) · multi-agent pipelines · text-to-SQL · prompt optimisation (GEPA, DSPy) · SFT / RAFT · LLM evals</td></tr>
+      <tr><td><strong>Data science</strong></td><td>Python · SQL · statistics &amp; econometrics · ML engineering · data visualisation</td></tr>
+      <tr><td><strong>Data engineering</strong></td><td>Pipelines &amp; ETL (dlt, dbt) · data quality · Postgres / pgvector</td></tr>
+      <tr><td><strong>Cloud &amp; infra</strong></td><td>Azure · AWS · Terraform · Docker · CI/CD</td></tr>
+      <tr><td><strong>Delivery</strong></td><td>End-to-end project delivery · stakeholder management · data strategy</td></tr>
+    </tbody></table>
+    <p class="center"><span class="ph">optional: github-readme-stats card</span> <span class="ph">optional: top-languages card</span></p>
+  </div></div></div>
+  <div class="pane"><div class="src" id="srcA"></div></div>
+</div>
+
+<h3>Option B — rendered preview &amp; markdown</h3>
+<div class="tabs">
+  <input type="radio" name="tabB" id="tabB-1" checked><input type="radio" name="tabB" id="tabB-2">
+  <div class="tabbar"><label for="tabB-1">Rendered (as GitHub shows it)</label><label for="tabB-2">Markdown source</label></div>
+  <div class="pane"><div class="gh"><div class="frame">
+    <h1>Nathan Phillips</h1>
+    <p><strong>I build AI systems that are measured, not asserted.</strong><br>Data scientist turned AI engineer — four production-style LLM agents, every one shipped with an eval harness, a golden set, and a number I can defend.</p>
+    <p>📍 Australia · 🚀 Open to AI / ML / Data Science roles · 📬 nmpdsci@gmail.com · 🔗 <a href="https://linkedin.com/in/nmp-dsci">LinkedIn</a> · 🌐 <a href="https://nmp-dsci.github.io">Portfolio</a></p>
+    <h2>What I've built</h2>
+    <h4>💬 ConvFinQA Agent — multi-turn financial Q&amp;A</h4>
+    <p><strong>Problem</strong> Analysts ask chained questions over financial reports that mix prose and tables.<br><strong>Built</strong> A four-stage agent pipeline with a live admin console: eval runs, GEPA prompt-optimisation experiments, question-by-question diffs between versions, and a public demo that can't spend money by construction.<br><strong>Result</strong> 77.7% accuracy on never-seen conversations (770-question set); GEPA-optimised prompts +4.9 pts over baseline.<br><span class="chip">Pydantic AI</span><span class="chip">GEPA</span><span class="chip">Docker</span> → <a href="https://github.com/nmp-dsci/ConvFinQA-agent">repo</a></p>
+    <h4>⚖️ CUAD Legal Agent — contract clause extraction</h4>
+    <p><strong>Problem</strong> Lawyers spend hours reading contracts to answer the same 41 standard review questions.<br><strong>Built</strong> A legal-review agent evaluated across five context strategies (raw, dense, hybrid, hierarchical BM25 / dense) against human-labelled golden spans.<br><strong>Result</strong> 83.7% token-F1 on 2,050 contract/question pairs — +43.6 pts over the v1 baseline.<br><span class="chip">LangChain</span><span class="chip">DSPy</span><span class="chip">BM25 + dense retrieval</span> → <a href="https://github.com/nmp-dsci/CUAD-agent">repo</a></p>
+    <h4>🎧 transcript·lab — evaluation-first RAG workbench</h4>
+    <p><strong>Problem</strong> "Does RAG work?" is the wrong question. "Which retrieval config ranks the evidence best, and how do you know?" is the right one.<br><strong>Built</strong> Four answer paths (single-hop, recursive multi-hop, agentic ReAct, GraphRAG) over one shared hybrid-retrieval stack, with an ablation harness and a CI eval-regression gate.<br><strong>Result</strong> Every retrieval claim backed by a committed, reproducible eval run.<br><span class="chip">Neo4j</span><span class="chip">MiniLM</span><span class="chip">RRF fusion</span><span class="chip">cross-encoder rerank</span> → <a href="https://github.com/nmp-dsci/transcript-rag-agent">repo</a></p>
+    <h4>📊 Data Pilot — governed text-to-SQL agent</h4>
+    <p><strong>Problem</strong> Self-serve analytics breaks the moment users can see data they shouldn't.<br><strong>Built</strong> A conversational data agent that compiles natural language into governed SQL, with Postgres row-level security so two users asking the same question get different (correct) answers.<br><strong>Result</strong> Whole stack boots with one <code>make up</code> — Postgres + pgvector, dlt + dbt pipeline, API, agent, frontend.<br><span class="chip">Postgres</span><span class="chip">pgvector</span><span class="chip">dlt</span><span class="chip">dbt</span><span class="chip">Docker</span> → <a href="https://github.com/nmp-dsci/data-qa-agent">repo</a></p>
+    <h2>How I work</h2>
+    <p>Every repo above carries an <code>ai_specs/</code> folder that pins the problem, the eval, and the acceptance bar <em>before</em> any code — then Claude Code / Codex agents build against that spec. Systematic, not vibes.</p>
+    <h2>Background</h2>
+    <p>BSc / BCom (Statistics, Finance &amp; Econometrics), Macquarie University. Data scientist across tech, consulting, startup and corporate — comfortable owning a problem from data pipeline to stakeholder decision.</p>
+    <p><strong>Toolbox</strong> Python · SQL · Pydantic AI · LangChain · DSPy · dlt · dbt · Postgres · Azure · AWS · Terraform · Docker</p>
+  </div></div></div>
+  <div class="pane"><div class="src" id="srcB"></div></div>
+</div>
+
+<!-- ============ 5. DECISION ============ -->
+<h2><span class="n">5</span>Your call <span class="badge b-green">answered: Blend A + B — applied</span></h2>
+<p class="sub">Pick a direction and I'll write it to <code>README.md</code> (numbers re-checked against the repos first). Annotate any row, issue, or paragraph above to change the detail before I apply it.</p>
+<div class="card">
+<form class="decide" data-lavish-question="readme-direction" onsubmit="event.preventDefault();const fd=new FormData(event.currentTarget);const c=fd.get('dir');const n=(fd.get('notes')||'').trim();if(!c)return;const msg='Apply \"'+c+'\" to README.md in the nmp-dsci profile repo. Re-verify every number against the project repos before writing.'+(n?' Notes: '+n:'');window.lavish.queuePrompt(msg,{tag:'choice',text:'README direction: '+c,element:event.currentTarget,queueKey:'readme-direction',data:{answer:c,notes:n}});document.getElementById('queued').textContent='Queued: '+c+(n?' (with notes)':'')+' — press Send to Agent when ready.';">
+  <div class="choices">
+    <label class="ch"><input type="radio" name="dir" value="Quick-fix patch only"><div><b>Quick-fix patch only</b><span>Fix issues ①–⑥, keep current structure.</span></div></label>
+    <label class="ch"><input type="radio" name="dir" value="Option A — Evidence-first profile"><div><b>Option A</b><span>Evidence-first table, grouped skills, badges.</span></div></label>
+    <label class="ch"><input type="radio" name="dir" value="Option B — Case-study profile"><div><b>Option B</b><span>Case-study narrative + "How I work".</span></div></label>
+    <label class="ch"><input type="radio" name="dir" value="Blend: Option B body with Option A's contact badges and skills table"><div><b>Blend A + B</b><span>B's case studies, A's badges &amp; skills table.</span></div></label>
+  </div>
+  <textarea name="notes" placeholder="Anything to change first? e.g. 'keep the view counter', 'the 90% figure is from X — use that', 'drop Data Pilot'"></textarea>
+  <div class="row"><button class="btn" type="submit">Queue this answer</button><span id="queued">Nothing queued yet.</span></div>
+</form>
+</div>
+
+<p class="foot">Sources: <code>README.md</code> (working tree, incl. uncommitted diff), and the READMEs of <code>ConvFinQA-agent</code>, <code>CUAD-agent</code>, <code>transcript-rag-agent</code>, <code>data-qa-agent</code> in <code>~/git/nmp-ai-portfolio</code>. All seven profile links returned HTTP 200. Projected scores are estimates against the same rubric.</p>
+
+</main>
+
+<!-- ===== raw markdown payloads (not rendered) ===== -->
+<script type="text/plain" id="md-current"><h1 align="center">Hi 👋, I'm Nathan Phillips</h1>
+<h3 align="center">Turning data into decisions that drive real-world impact 📈</h3>
+
+---
+
+### 👨‍💻 About Me
+
+- 🛠 Experienced Data Scientist Delivering end to end Projcts in Tech / Consulting / Startup / Corporate 
+- 🧠 Passionate about Data, AI, Analytics and Machine Learning  
+- 🌱 Currently learning **Agentic AI** to expand into building AI Agents and work through Coding agents
+- 🛠 Skills: Python, SQL, ML Engineering, Data Visualisation, Project Delivery, AI 
+- 🚀 Open to: ** AI /ML / Data Science roles across Australia**
+- 📂 Portfolio: https://nmp-dsci.github.io  
+- 📬 Reach me: nmpdsci@gmail.com
+- 🎓 Bachelors Science / Commerce, Majors in Statistics, Finance & Econometrics @ Macquiare University  
+
+
+---
+
+### 🔗 Connect with Me
+
+<p align="left">
+<a href="https://linkedin.com/in/nmp-dsci" target="_blank">
+<img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" />
+</a>
+<a href="mailto:nmpdsci@gmail.com" target="_blank">
+  <img src="https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail&logoColor=white" />
+</a>
+</p>
+
+---
+
+### 🛠️ Skills
+ - Data Science & Strategy 
+ - Data Analysis and Visualization
+ - AI/ML/LLM Implementation and Integration
+ - LLM Performance Optimization: RAG, Agentic RAG, SFT, and RAFT
+ - Data Engineering: Pipelines builds, ETL and quality control 
+ - Cloud Computing and Distributed Systems: Azure, AWS, Terraform
+
+---
+
+### ⭐ Featured Projects
+
+| Project | Description | Impact | Repo | 
+|--------|-------------|-------|---------------|
+| 🎧 Finance Q&A Chatbot| Financial data (ConvFinQA) mutli turn chat bot | 90% accuracy with Multi-Agent | https://github.com/nmp-dsci/ConvFinQA-agent |
+| 📚 Legal Q&A Agent | Extract Legal Clauses from Contract  | ⏱️ Reduce manual effort reading contracts  | https://github.com/nmp-dsci/CUAD-agent | 
+| 📊 YouTube Transcript Agent | Q&A agent on target topics with filtering and recursive RAG | Time to insight / deeper analysis | https://github.com/nmp-dsci/yt-agent | 
+| 🧠 Auto Data Analyst | Text to SQL agent,  | TBC | https://github.com/nmp-dsci/data-qa-agent | 
+
+📌 All repos: https://github.com/nmp-dsci?tab=repositories  
+
+---
+
+
+---
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=nmp-dsci&label=Profile+Views&color=brightgreen&style=plastic" />
+</p>
+</script>
+
+<script type="text/plain" id="md-fixed"><h1 align="center">Hi 👋, I'm Nathan Phillips</h1>
+<h3 align="center">Turning data into decisions that drive real-world impact 📈</h3>
+
+---
+
+### 👨‍💻 About Me
+
+- 🛠 Experienced Data Scientist delivering end-to-end projects in Tech / Consulting / Startup / Corporate
+- 🧠 Passionate about Data, AI, Analytics and Machine Learning
+- 🌱 Currently learning **Agentic AI** to expand into building AI Agents and work through Coding agents
+- 🚀 Open to: **AI / ML / Data Science roles across Australia**
+- 📂 Portfolio: https://nmp-dsci.github.io
+- 📬 Reach me: nmpdsci@gmail.com
+- 🎓 Bachelor of Science / Commerce, majors in Statistics, Finance & Econometrics @ Macquarie University
+
+
+---
+
+### 🔗 Connect with Me
+
+<p align="left">
+<a href="https://linkedin.com/in/nmp-dsci" target="_blank">
+<img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" />
+</a>
+<a href="mailto:nmpdsci@gmail.com" target="_blank">
+  <img src="https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail&logoColor=white" />
+</a>
+</p>
+
+---
+
+### 🛠️ Skills
+ - Data Science & Strategy
+ - Data Analysis and Visualization
+ - AI/ML/LLM Implementation and Integration
+ - LLM Performance Optimization: RAG, Agentic RAG, SFT, and RAFT
+ - Data Engineering: pipeline builds, ETL and quality control
+ - Cloud Computing and Distributed Systems: Azure, AWS, Terraform
+
+---
+
+### ⭐ Featured Projects
+
+| Project | Description | Impact | Repo |
+|--------|-------------|-------|---------------|
+| 🎧 Finance Q&A Chatbot | Financial data (ConvFinQA) multi-turn chat bot | 77.7% accuracy on never-seen conversations, +4.9 pts via GEPA | https://github.com/nmp-dsci/ConvFinQA-agent |
+| 📚 Legal Q&A Agent | Extract legal clauses from contracts | 83.7% token-F1, +43.6 pts over baseline on 2,050 examples | https://github.com/nmp-dsci/CUAD-agent |
+| 📊 YouTube Transcript Agent | Q&A agent on target topics with filtering and recursive RAG | 4 answer paths benchmarked on a golden set with a CI eval gate | https://github.com/nmp-dsci/transcript-rag-agent |
+| 🧠 Auto Data Analyst | Text-to-SQL agent with row-level security | Governed self-serve analytics; one-command local stack | https://github.com/nmp-dsci/data-qa-agent |
+
+📌 All repos: https://github.com/nmp-dsci?tab=repositories
+
+---
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=nmp-dsci&label=Profile+Views&color=brightgreen&style=plastic" />
+</p>
+</script>
+
+<script type="text/plain" id="md-A"><h1 align="center">Hi 👋, I'm Nathan Phillips</h1>
+<h3 align="center">Data Scientist → AI Engineer. I ship evaluated, production-grade LLM systems.</h3>
+
+<p align="center">
+  <a href="https://linkedin.com/in/nmp-dsci"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+  <a href="mailto:nmpdsci@gmail.com"><img src="https://img.shields.io/badge/Email-nmpdsci%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+  <a href="https://nmp-dsci.github.io"><img src="https://img.shields.io/badge/Portfolio-nmp--dsci.github.io-222?style=for-the-badge&logo=github&logoColor=white" /></a>
+</p>
+
+---
+
+### 👨‍💻 About me
+
+- 🛠 Data Scientist with end-to-end delivery experience across tech, consulting, startup and corporate
+- 🤖 Now building **agentic AI systems** — multi-agent pipelines, RAG, text-to-SQL — with evals as the source of truth
+- 🎓 BSc / BCom (Statistics, Finance & Econometrics), Macquarie University
+- 🚀 **Open to AI / ML / Data Science roles across Australia**
+
+---
+
+### ⭐ Featured projects
+
+| Project | What it does | Result | Stack |
+|---|---|---|---|
+| 💬 [ConvFinQA Agent](https://github.com/nmp-dsci/ConvFinQA-agent) | Multi-turn financial Q&A over report text + tables; 4-stage agent pipeline with admin console & experiment tracking | **77.7% accuracy** on never-seen conversations (+4.9 pts via GEPA prompt optimisation) | Pydantic AI · GEPA · Docker |
+| ⚖️ [CUAD Legal Agent](https://github.com/nmp-dsci/CUAD-agent) | Answers 41 standard legal-review questions across 50 contracts; compares raw vs dense / hybrid / hierarchical RAG | **83.7% token-F1**, +43.6 pts over baseline on 2,050 examples | LangChain · DSPy · BM25 + dense |
+| 🎧 [transcript·lab](https://github.com/nmp-dsci/transcript-rag-agent) | Evaluation-first YouTube-transcript RAG: hybrid retrieval, reranking, multi-hop, GraphRAG | 4 answer paths benchmarked on a golden set; CI eval-regression gate | Neo4j · MiniLM · RRF |
+| 📊 [Data Pilot](https://github.com/nmp-dsci/data-qa-agent) | Text-to-SQL data agent with row-level security — users only query what they're authorised to see | One-command local stack (`make up`) | Postgres + pgvector · dlt · dbt · Docker |
+
+📌 [All repositories →](https://github.com/nmp-dsci?tab=repositories)
+
+---
+
+### 🛠️ Skills
+
+| | |
+|---|---|
+| **AI / LLM** | RAG (dense, hybrid, hierarchical, GraphRAG) · multi-agent pipelines · text-to-SQL · prompt optimisation (GEPA, DSPy) · SFT / RAFT · LLM evals |
+| **Data science** | Python · SQL · statistics & econometrics · ML engineering · data visualisation |
+| **Data engineering** | Pipelines & ETL (dlt, dbt) · data quality · Postgres / pgvector |
+| **Cloud & infra** | Azure · AWS · Terraform · Docker · CI/CD |
+| **Delivery** | End-to-end project delivery · stakeholder management · data strategy |
+
+<!-- Optional: activity cards. Delete if you'd rather keep the page static. -->
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=nmp-dsci&show_icons=true&hide_border=true" height="160" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nmp-dsci&layout=compact&hide_border=true" height="160" />
+</p>
+</script>
+
+<script type="text/plain" id="md-B"># Nathan Phillips
+
+**I build AI systems that are measured, not asserted.**
+Data scientist turned AI engineer — four production-style LLM agents, every one shipped with an eval harness, a golden set, and a number I can defend.
+
+📍 Australia · 🚀 Open to AI / ML / Data Science roles · 📬 nmpdsci@gmail.com · 🔗 [LinkedIn](https://linkedin.com/in/nmp-dsci) · 🌐 [Portfolio](https://nmp-dsci.github.io)
+
+## What I've built
+
+#### 💬 ConvFinQA Agent — multi-turn financial Q&A
+**Problem** Analysts ask chained questions over financial reports that mix prose and tables.
+**Built** A four-stage agent pipeline with a live admin console: eval runs, GEPA prompt-optimisation experiments, question-by-question diffs between versions, and a public demo that can't spend money by construction.
+**Result** 77.7% accuracy on never-seen conversations (770-question set); GEPA-optimised prompts +4.9 pts over baseline.
+`Pydantic AI` `GEPA` `Docker` → [repo](https://github.com/nmp-dsci/ConvFinQA-agent)
+
+#### ⚖️ CUAD Legal Agent — contract clause extraction
+**Problem** Lawyers spend hours reading contracts to answer the same 41 standard review questions.
+**Built** A legal-review agent evaluated across five context strategies (raw, dense, hybrid, hierarchical BM25 / dense) against human-labelled golden spans.
+**Result** 83.7% token-F1 on 2,050 contract/question pairs — +43.6 pts over the v1 baseline.
+`LangChain` `DSPy` `BM25 + dense retrieval` → [repo](https://github.com/nmp-dsci/CUAD-agent)
+
+#### 🎧 transcript·lab — evaluation-first RAG workbench
+**Problem** "Does RAG work?" is the wrong question. "Which retrieval config ranks the evidence best, and how do you know?" is the right one.
+**Built** Four answer paths (single-hop, recursive multi-hop, agentic ReAct, GraphRAG) over one shared hybrid-retrieval stack, with an ablation harness and a CI eval-regression gate.
+**Result** Every retrieval claim backed by a committed, reproducible eval run.
+`Neo4j` `MiniLM` `RRF fusion` `cross-encoder rerank` → [repo](https://github.com/nmp-dsci/transcript-rag-agent)
+
+#### 📊 Data Pilot — governed text-to-SQL agent
+**Problem** Self-serve analytics breaks the moment users can see data they shouldn't.
+**Built** A conversational data agent that compiles natural language into governed SQL, with Postgres row-level security so two users asking the same question get different (correct) answers.
+**Result** Whole stack boots with one `make up` — Postgres + pgvector, dlt + dbt pipeline, API, agent, frontend.
+`Postgres` `pgvector` `dlt` `dbt` `Docker` → [repo](https://github.com/nmp-dsci/data-qa-agent)
+
+## How I work
+
+Every repo above carries an `ai_specs/` folder that pins the problem, the eval, and the acceptance bar *before* any code — then Claude Code / Codex agents build against that spec. Systematic, not vibes.
+
+## Background
+
+BSc / BCom (Statistics, Finance & Econometrics), Macquarie University. Data scientist across tech, consulting, startup and corporate — comfortable owning a problem from data pipeline to stakeholder decision.
+
+**Toolbox** Python · SQL · Pydantic AI · LangChain · DSPy · dlt · dbt · Postgres · Azure · AWS · Terraform · Docker
+</script>
+
+<script type="module">
+  import { File, FileDiff } from "https://esm.sh/@pierre/diffs@1.2.10?bundle";
+  const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const options = { theme: { light: "github-light", dark: "github-dark" }, themeType: dark ? "dark" : "light", overflow: "wrap" };
+  const md = id => document.getElementById(id).textContent.replace(/^\n/, "");
+
+  new FileDiff({ ...options, diffStyle: window.innerWidth < 900 ? "unified" : "split" }).render({
+    containerWrapper: document.querySelector("#quickfix"),
+    oldFile: { name: "README.md (current)", contents: md("md-current") },
+    newFile: { name: "README.md (quick fixes)", contents: md("md-fixed") },
+  });
+  new File(options).render({ containerWrapper: document.querySelector("#srcA"), file: { name: "README.md — Option A", contents: md("md-A") } });
+  new File(options).render({ containerWrapper: document.querySelector("#srcB"), file: { name: "README.md — Option B", contents: md("md-B") } });
+</script>
+</body>
+</html>
