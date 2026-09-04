@@ -16,33 +16,14 @@ Data scientist turned AI engineer — four production-style LLM agents, every on
 
 ## 🧪 What I've built
 
-#### 💬 ConvFinQA Agent — multi-turn financial Q&A
+Quick summaries of each AI agent — full case studies (architecture, evals, live demos) are on my **[portfolio](https://nmp-dsci.github.io)**.
 
-- **Problem** — Analysts ask chained questions over financial reports that mix prose and tables.
-- **Built** — A four-stage agent pipeline with a live admin console: eval runs, GEPA prompt-optimisation experiments, question-by-question diffs between versions, and a public demo that can't spend money by construction.
-- **Result** — **77.7% accuracy** on never-seen conversations (770-question set); GEPA-optimised prompts +4.9 pts over baseline.
-- `Pydantic AI` `GEPA` `Docker` → [repo](https://github.com/nmp-dsci/ConvFinQA-agent)
-
-#### ⚖️ CUAD Legal Agent — contract clause extraction
-
-- **Problem** — Lawyers spend hours reading contracts to answer the same 41 standard review questions.
-- **Built** — A legal-review agent evaluated across five context strategies (raw, dense, hybrid, hierarchical BM25 / dense) against human-labelled golden spans.
-- **Result** — **83.7% token-F1** on 2,050 contract/question pairs — +43.6 pts over the v1 baseline.
-- `LangChain` `DSPy` `BM25 + dense retrieval` → [repo](https://github.com/nmp-dsci/CUAD-agent)
-
-#### 🎧 transcript·lab — evaluation-first RAG workbench
-
-- **Problem** — "Does RAG work?" is the wrong question. "Which retrieval config ranks the evidence best, and how do you know?" is the right one.
-- **Built** — Four answer paths (single-hop, recursive multi-hop, agentic ReAct, GraphRAG) over one shared hybrid-retrieval stack, with an ablation harness and a CI eval-regression gate.
-- **Result** — Every retrieval claim backed by a committed, reproducible eval run.
-- `Neo4j` `MiniLM` `RRF fusion` `cross-encoder rerank` → [repo](https://github.com/nmp-dsci/transcript-rag-agent)
-
-#### 📊 Data Pilot — governed text-to-SQL agent
-
-- **Problem** — Self-serve analytics breaks the moment users can see data they shouldn't.
-- **Built** — A conversational data agent that compiles natural language into governed SQL, with Postgres row-level security so two users asking the same question get different (correct) answers.
-- **Result** — Whole stack boots with one `make up` — Postgres + pgvector, dlt + dbt pipeline, API, agent, frontend.
-- `Postgres` `pgvector` `dlt` `dbt` `Docker` → [repo](https://github.com/nmp-dsci/data-qa-agent)
+| Agent | Quick summary | Result | Deep dive |
+|---|---|---|---|
+| 💬 **ConvFinQA Agent** | Multi-turn financial Q&A over report text + tables — a four-agent pipeline with a self-improving eval loop and a read-only operator console | **77.7% accuracy** on never-seen conversations, +4.9 pts via GEPA | [portfolio](https://nmp-dsci.github.io/projects/convfinqa-agent/) · [repo](https://github.com/nmp-dsci/ConvFinQA-agent) |
+| ⚖️ **CUAD Legal Agent** | Contract review at benchmark scale — 41 legal questions × 50 contracts, full-context vs four RAG variants raced head-to-head | **83.7% token-F1**, +43.6 pts over baseline on 2,050 examples | [repo](https://github.com/nmp-dsci/CUAD-agent) |
+| 🎧 **transcript·lab** | Evaluation-first YouTube-transcript RAG workbench — 4 answer paths (single-hop, multi-hop, ReAct, GraphRAG) over one hybrid-retrieval stack | Golden-set benchmarks with a CI eval-regression gate | [portfolio](https://nmp-dsci.github.io/projects/transcript-rag/) · [repo](https://github.com/nmp-dsci/transcript-rag-agent) |
+| 📊 **Data Pilot** | Governed text-to-SQL data agent — natural language to SQL under Postgres row-level security, whole stack boots with one `make up` | Users only ever query data they're authorised to see | [portfolio](https://nmp-dsci.github.io/projects/data-pilot/) · [repo](https://github.com/nmp-dsci/data-qa-agent) |
 
 📌 [All repositories →](https://github.com/nmp-dsci?tab=repositories)
 
@@ -69,3 +50,9 @@ Every repo above carries an `ai_specs/` folder that pins the problem, the eval, 
 ## 🎓 Background
 
 BSc / BCom (Statistics, Finance & Econometrics), Macquarie University. Data scientist across tech, consulting, startup and corporate — comfortable owning a problem from data pipeline to stakeholder decision.
+
+---
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=nmp-dsci&label=Profile+Views&color=brightgreen&style=plastic" alt="Profile views" />
+</p>
