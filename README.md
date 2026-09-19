@@ -12,5 +12,11 @@
 </p>
 
 <p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=nmp-dsci&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&hide_title=true&theme=transparent" alt="GitHub stats" />
+</p>
+
+<p align="center">
   📌 <a href="https://github.com/nmp-dsci?tab=repositories">All repositories →</a>
+  &nbsp;·&nbsp;
+  <img src="https://komarev.com/ghpvc/?username=nmp-dsci&label=Profile+views&color=555&style=flat" alt="Profile views" />
 </p>
