@@ -18,5 +18,5 @@
 <p align="center">
   📌 <a href="https://github.com/nmp-dsci?tab=repositories">All repositories →</a>
   &nbsp;·&nbsp;
-  <img src="https://komarev.com/ghpvc/?username=nmp-dsci&label=Profile+views&color=555&style=flat" alt="Profile views" />
+  <img src="https://komarev.com/ghpvc/?username=nmp-dsci&label=Profile+views&color=555555&style=flat" alt="Profile views" />
 </p>
